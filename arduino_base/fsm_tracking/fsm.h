@@ -1,3 +1,6 @@
+/*
+ *  Provides available states, does not provide next state behavior.
+ */
 #ifndef StateMachine.h
 #define StateMachine.h
 
@@ -5,16 +8,20 @@
 
 
     class StateMachine {
-        public:
-            StateMachine();
-            
-            void nextState();
-
-        private:
-            struct State {
+        struct State {
                 char stateValue;
                 char stateOutput;
-            }
+        }
+
+        public:
+            StateMachine();
+
+            void nextState();
+            State getCurrentState();
+
+        private:
+            State currentState;
+            
             State rotateEast();
             State rotateWest();
             State sleep();
